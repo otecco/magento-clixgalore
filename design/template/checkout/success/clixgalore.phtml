@@ -1,0 +1,31 @@
+<?php /*
+    Shopix_ClixGalore - clixGalore transaction code integration Magento extension
+    Copyright (C) 2013 Shopix Pty Ltd (http://www.shopix.com.au)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/ ?>
+<?php
+$_adid = Mage::getStoreConfig('checkout/clixgalore/adid');
+$_order_id = $this->getOrderId();
+
+if ($_adid && $_order_id):
+    $_real_order_id = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+    $_order = Mage::getModel('sales/order')->loadByIncrementId($_real_order_id);
+    $_sale_amount = $_order->getGrandTotal() - $_order->getShippingAmount();
+?>
+    <!--begin clixGalore code copyright 2013 -->
+    <img src="https://www.clixGalore.com/AdvTransaction.aspx?AdID=<?php echo $this->escapeHtml($_adid) ?>&amp;SV=<?php echo $this->escapeHtml($_sale_amount) ?>&amp;OID=<?php echo $this->escapeHtml($_order_id) ?>" height="0" width="0" border="0">
+    <!--end clixGalore code -->
+<? endif; ?>
+
