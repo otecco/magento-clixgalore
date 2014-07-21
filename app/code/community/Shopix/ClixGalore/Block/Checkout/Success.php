@@ -35,13 +35,15 @@ class Shopix_ClixGalore_Block_Checkout_Success extends Mage_Checkout_Block_Onepa
     public function getUrlParams() {
 	if ($this->getOrderId() && $this->getAccountId()) {
 	    $_order = Mage::getModel('sales/order')->loadByIncrementId(Mage::getSingleton('checkout/session')->getLastRealOrderId());
-	    $_value = $_order->getGrandTotal() - $_order->getShippingAmount();
+	    if (is_object($_order) && $_order->getId()) {
+		$_value = $_order->getGrandTotal() - $_order->getShippingAmount();
 
-	    $params = http_build_query(array('AdID' => $this->getAccountId(),
-		'SV' => $_value,
-		'OID' => $_order->getIncrementId()), '', '&amp;');
+		$params = http_build_query(array('AdID' => $this->getAccountId(),
+		    'SV' => $_value,
+		    'OID' => $_order->getIncrementId()), '', '&amp;');
 
-	    return $params;
+		return $params;
+	    }
 	}
 	return false;
     }
