@@ -1,0 +1,25 @@
+{
+    "name": "shopix/clixgalore",
+    "type": "magento-module",
+    "license": "GNU AFFERO",
+    "homepage": "https://github.com/shopixco/magento-clixgalore",
+    "description": "clixGalore transaction code integration Magento extension",
+    "authors": [
+	{
+	    "name": "Jan Tomka",
+	    "email": "info@shopix.com.au",
+	    "name": "Lucas van Staden",
+	    "email": "sales@proxiblue.com.au"
+	}
+    ],
+    "require": {
+	"magento-hackathon/magento-composer-installer": "*"
+    },
+    "extra": {
+	"map": [
+	    ["app/code/community/Shopix/ClixGalore", "app/code/community/Shopix/ClixGalore"],
+	    ["app/design/frontend/base/default", "app/design/frontend/base/default"],
+	    ["app/etc/modules/Shopix_ClixGalore.xml", "app/etc/modules/Shopix_ClixGalore.xml"]
+	]
+    }
+}

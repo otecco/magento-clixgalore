@@ -1,4 +1,5 @@
-<?php /*
+<?xml version="1.0"?>
+<!--
     Shopix_ClixGalore - clixGalore transaction code integration Magento extension
     Copyright (C) 2013 Shopix Pty Ltd (http://www.shopix.com.au)
 
@@ -14,18 +15,27 @@
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/ ?>
-<?php
-$_adid = Mage::getStoreConfig('checkout/clixgalore/adid');
-$_order_id = $this->getOrderId();
-
-if ($_adid && $_order_id):
-    $_real_order_id = Mage::getSingleton('checkout/session')->getLastRealOrderId();
-    $_order = Mage::getModel('sales/order')->loadByIncrementId($_real_order_id);
-    $_sale_amount = $_order->getGrandTotal() - $_order->getShippingAmount();
-?>
-    <!--begin clixGalore code copyright 2013 -->
-    <img src="https://www.clixGalore.com/AdvTransaction.aspx?AdID=<?php echo $this->escapeHtml($_adid) ?>&amp;SV=<?php echo $this->escapeHtml($_sale_amount) ?>&amp;OID=<?php echo $this->escapeHtml($_order_id) ?>" height="0" width="0" border="0">
-    <!--end clixGalore code -->
-<? endif; ?>
-
+-->
+<config>
+    <modules>
+	<Shopix_ClixGalore>
+	    <version>1.0.1</version>
+	</Shopix_ClixGalore>
+    </modules>
+    <global>
+	<blocks>
+	    <shopix_clixgalore>
+		<class>Shopix_ClixGalore_Block</class>
+	    </shopix_clixgalore>
+	</blocks>
+    </global>
+    <frontend>
+	<layout>
+	    <updates>
+		<Shopix_ClixGalore>
+		    <file>clixgalore.xml</file>
+		</Shopix_ClixGalore>
+	    </updates>
+	</layout>
+    </frontend>
+</config>

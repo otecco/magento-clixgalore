@@ -16,19 +16,10 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<config>
-    <modules>
-        <Shopix_ClixGalore>
-            <version>1.0.0</version>
-        </Shopix_ClixGalore>
-    </modules>
-    <frontend>
-        <layout>
-            <updates>
-                <Shopix_ClixGalore>
-                    <file>clixgalore.xml</file>
-                </Shopix_ClixGalore>
-            </updates>
-        </layout>
-    </frontend>
-</config>
+<layout version="0.1.0">
+    <checkout_onepage_success>
+	<reference name="before_body_end">
+	    <block type="shopix_clixgalore/checkout_success" name="checkout.success.clixgalore" template="checkout/success/clixgalore.phtml" />
+	</reference>
+    </checkout_onepage_success>
+</layout>
