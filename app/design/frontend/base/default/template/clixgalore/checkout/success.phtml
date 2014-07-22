@@ -1,5 +1,4 @@
-<?xml version="1.0"?>
-<!--
+<?php /*
     Shopix_ClixGalore - clixGalore transaction code integration Magento extension
     Copyright (C) 2013 Shopix Pty Ltd (http://www.shopix.com.au)
 
@@ -15,11 +14,10 @@
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
-<layout version="0.1.0">
-    <checkout_onepage_success>
-        <reference name="content">
-            <block type="checkout/onepage_success" name="checkout.success.clixgalore" template="checkout/success/clixgalore.phtml" />
-        </reference>
-    </checkout_onepage_success>
-</layout>
+*/ ?>
+<?php if ($_params = $this->getUrlParams()): ?>
+    <!--begin clixGalore code copyright 2013 -->
+            <img src="<?php echo $this->getProdUrl(); ?>?<?php echo $_params; ?>" height = "0" width = "0" border = "0">
+        <!--end clixGalore code -->
+    <?php endif; ?>
+
