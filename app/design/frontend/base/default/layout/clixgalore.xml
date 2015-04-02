@@ -18,8 +18,8 @@
 -->
 <layout version="0.1.0">
     <checkout_onepage_success>
-	<reference name="before_body_end">
-	    <block type="shopix_clixgalore/checkout_success" name="checkout.success.clixgalore" template="checkout/success/clixgalore.phtml" />
-	</reference>
+        <reference name="before_body_end">
+            <block type="shopix_clixgalore/checkout_success" name="checkout.success.clixgalore" template="clixgalore/checkout/success.phtml" />
+        </reference>
     </checkout_onepage_success>
 </layout>
